@@ -1,4 +1,4 @@
-data
-DATA
+data/
+DATA/
 *.jpg
-__pycache__
+__pycache__/
