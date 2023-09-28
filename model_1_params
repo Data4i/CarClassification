@@ -1,0 +1,6 @@
+ist conv -> 224, 224, 32 -> 222, 222, 32 -> maxpool -> 111, 111, 32
+2nd conv -> 111, 111, 32 -> 109, 109, 64 -> maxpool -> 54, 54, 64
+3rd conv -> 54, 54, 64 -> 52, 52, 64 -> maxpool -> 26, 26, 64
+flatten -> 26 * 26 * 64 -> 43264
+linear -> 43264 -> 64
+linear -> 64 -> len(num_classes)
