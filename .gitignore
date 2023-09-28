@@ -1,4 +1,5 @@
 data/
+data
 DATA/
 *.jpg
 __pycache__/
