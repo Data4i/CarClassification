@@ -1,7 +1,7 @@
 import os
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
-import torchvision.transforms as T
+import torch
 
 class CustomDataset(Dataset):
     """My CustomDataset to load the images per folder"""
@@ -36,8 +36,12 @@ class CustomDataset(Dataset):
         
         if self.transforms:
             image = self.transforms(image)
+            
+        label_tensor = torch.zeros(len(self.class_to_idx))
+        label_tensor[label] = 1
         
-        return image, label
+        
+        return image, label_tensor
 
     def __len__(self):
         return len(self.image_paths)
