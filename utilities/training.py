@@ -31,7 +31,7 @@ def fit(epochs, model, train_dl, test_dl, criterion, optimizer, device, step = N
                 print(f'looked at {batch * len(X)}/{len(train_dl.dataset)} samples')
                 
             train_loss /= len(train_dl)
-            train_loss_count.append(train_loss)
+            train_loss_count.append(train_loss.detach.numpy())
             
         model.eval()
         with torch.inference_mode():
@@ -45,7 +45,7 @@ def fit(epochs, model, train_dl, test_dl, criterion, optimizer, device, step = N
                 
                 
             test_loss /= len(test_dl)
-            test_loss_count.append(test_loss)
+            test_loss_count.append(test_loss.detach().numpy())
             
         # if epoch % step == 0:
         print(f'Train Loss -> {train_loss:.2f} | Test Loss -> {test_loss:.2f}')
