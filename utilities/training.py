@@ -20,7 +20,7 @@ def fit(epochs, model, train_dl, test_dl, criterion, optimizer, device, step = N
             
             y_pred = model(X)
             
-            loss = criterion(y_pred, y)
+            loss = criterion(torch.softmax(y_pred, dim = 1).squeeze(), y)
             train_loss += loss
             
             optimizer.zero_grad()
@@ -40,8 +40,9 @@ def fit(epochs, model, train_dl, test_dl, criterion, optimizer, device, step = N
                 X, y = X.to(device), y.to(device)
                 
                 test_pred = model(X)
+                print(y)
+                test_loss = criterion(torch.softmax(test_pred, dim = 1).squeeze(), y.squeeze())
                 
-                test_loss += criterion(test_pred, y)
                 
             test_loss /= len(test_dl)
             test_loss_count.append(test_loss)
