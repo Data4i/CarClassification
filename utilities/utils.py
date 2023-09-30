@@ -13,3 +13,11 @@ def loss_plot(history):
     plt.ylabel('Loss')
     plt.legend(loc = 0)
     plt.show()
+    
+def acc_plot(history):
+    plt.plot(history['epochs'], history['train_acc'], c= 'b', label = 'training acc')
+    plt.plot(history['epochs'], history['test_acc'], c = 'r', label = 'testing acc')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend(loc = 0)
+    plt.show()

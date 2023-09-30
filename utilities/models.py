@@ -15,14 +15,17 @@ class CarClassifierV0(nn.Module):
             nn.Conv2d(3, 32, kernel_size=(11, 11)),
             nn.ReLU(),
             nn.MaxPool2d((2,2)),
+            nn.Dropout(p=0.5),   
         )
         
         self.features = nn.Sequential(
             nn.Conv2d(32, 64, kernel_size=(5,5)),
             nn.ReLU(),
             nn.MaxPool2d((2,2)),
+            nn.Dropout(p=0.5),
             nn.Conv2d(64, 64, kernel_size=(5,5)),
             nn.ReLU(),
+            nn.Dropout(p=0.3),
         )
         
         self.output = nn.Sequential(
